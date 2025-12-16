@@ -1,0 +1,22 @@
+name: Weskus_homelab
+
+
+include:
+  #Downloaders
+  - qbittorrent/compose.yaml          # Torrent client
+  - sabnzbd/compose.yaml              # Usnenet client
+
+  #Download Optimizers
+  - huntarr/compose.yaml              # Missing Media Item Hunter
+  - cleanuparr/compose.yaml           # Torrent Stalled Downloads Cleaner
+
+  #Media Management
+  - prowlarr/compose.yaml             # Indexer Manager
+  - sonarr/compose.yaml               # Series Manager
+  - radarr/compose.yaml               # Movie Manager
+  - recyclarr/compose.yaml            # Custom Format Sync
+  - jellyseerr/compose.yaml           # Media Search
+
+  #Misc
+  - homepage/compose.yaml             # Dashboard
+  - speedtest/compose.yaml            # Network Tester

@@ -1,0 +1,13 @@
+# --- SECRETS & ENVIRONMENT FILES ---
+# ABSOLUTELY DO NOT BACK UP THIS FILE! It holds your keys and passwords.
+.env
+
+# Docker data folders that want to exist with the correct permissions
+/*/backup/**
+!/*/backup/.gitkeep
+/*/config/**
+!/*/config/.gitkeep
+/*/logs/**
+!/*/logs/.gitkeep
+/*/tmp/**
+!/*/tmp/.gitkeep

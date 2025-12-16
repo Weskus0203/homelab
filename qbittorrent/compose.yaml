@@ -1,0 +1,53 @@
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: ghcr.io/hotio/qbittorrent
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=1
+    ports:
+      - "8085:8085"
+      - "8118:8118"
+    env_file:
+      - ../.env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+
+      #Web UI
+      - WEBUI_PORTS=8085/tcp,8085/udp
+      - LIBTORRENT=v2
+
+      #VPN Settings
+      - VPN_ENABLED=true
+      - VPN_CONF=wg0
+      - VPN_PROVIDER=proton
+      - VPN_LAN_NETWORK=${VPNLAN}
+      - VPN_LAN_LEAK_ENABLED=false
+      - VPN_AUTO_PORT_FORWARD=true
+      - VPN_FIREWALL_TYPE=auto
+      - VPN_HEALTHCHECK_ENABLED=true
+      - PRIVOXY_ENABLED=true
+      - VPN_EXPOSE_PORTS_ON_LAN=8118/tcp,8118/udp
+      - UNBOUND_ENABLED=false
+    volumes:
+      - ./config:/config
+      - ${MEDIA_DIR}:/data
+
+  seedboxapi:
+    container_name: seedboxapi
+    image: myanonamouse/seedboxapi
+    restart: unless-stopped
+    user: ${PUID}:${PGID}
+    network_mode: "service:qbittorrent"
+    env_file: ../.env
+    environment:
+      - DEBUG=1
+      - mam_id=${MaMID}
+    volumes:
+      - ./config/seedboxMaM:/config

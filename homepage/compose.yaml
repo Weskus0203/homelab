@@ -1,0 +1,20 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    env_file:
+      - ../.env
+      - ./.env
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=${HOSTS}
+      - PUID=${PUID}
+      - PGID=994
+      - TZ=${TZ}
+    ports:
+      - 3000:3000
+    volumes:
+      - ./config:/app/config
+      - ./config/assets:/app/public/images
+      - ./config/assets:/app/public/icons
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped

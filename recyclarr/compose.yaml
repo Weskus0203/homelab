@@ -1,0 +1,13 @@
+services:
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr
+    container_name: recyclarr
+    user: ${PUID}:${PGID}
+    env_file: 
+      - ../.env
+      - ./.env
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
