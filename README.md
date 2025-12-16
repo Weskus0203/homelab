@@ -36,22 +36,15 @@ The primary motivations behind this structured configuration repository are:
 * **Jellseerr**: Media Requests for Sonarr / Radarr.
 * **Recyclarr**: Custom Format Manager.
 
----
-
 ### 📥 Downloaders
 
 * **QBittorrent**: Torrent Client.
 * **SABnzbd**: Usenet Client.
 
----
-
 ### 🔍 Download Optimizers
 
 * **Cleanuparr**: Stalled Downloads and Queue Cleaner.
 * **Huntarr**: Missing Media Item Hunter.
-
----
-
 
 ### 💻 Misc
 
