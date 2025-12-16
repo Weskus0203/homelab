@@ -2,6 +2,7 @@
 # ABSOLUTELY DO NOT BACK UP THIS FILE! It holds your keys and passwords.
 .env
 
+
 # Docker data folders that want to exist with the correct permissions
 /*/backup/**
 !/*/backup/.gitkeep
@@ -9,5 +10,12 @@
 !/*/config/.gitkeep
 /*/logs/**
 !/*/logs/.gitkeep
+/*/log/**
+!/*/log/.gitkeep
 /*/tmp/**
 !/*/tmp/.gitkeep
+
+# Exceptions
+!/homepage/config/services.yaml
+!/homepage/config/settings.yaml
+!/homepage/config/widgets.yaml

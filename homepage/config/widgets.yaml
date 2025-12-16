@@ -1,0 +1,41 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- unifi_console:
+    url: {{HOMEPAGE_VAR_UNIFIURL}}
+    username: {{HOMEPAGE_VAR_UNIFIUSER}}
+    password: {{HOMEPAGE_VAR_UNIFIPW}}
+    #key: 
+- glances:
+    url: {{HOMEPAGE_VAR_GLANCESURL}}
+    username: {{HOMEPAGE_VAR_GLANCESUSER}} # optional if auth enabled in Glances
+    password: {{HOMEPAGE_VAR_GLANCESPW}} # optional if auth enabled in Glances
+    version: 4 # required only if running glances v4 or higher, defaults to 3
+    cpu: true # optional, enabled by default, disable by setting to false
+    mem: true # optional, enabled by default, disable by setting to false
+    cputemp: true # disabled by default
+    uptime: true # disabled by default
+    disk:
+      - /data
+    diskUnits: bytes # optional, bytes (default) or bbytes. Only applies to disk
+    expanded: true # show the expanded view
+    label: Home1 # optional
+- search:
+    provider: google
+    target: _blank
+
+- datetime:
+    text_size: xl
+    format:
+        dateStyle: long
+        timeStyle: short
+        hourCycle: h23
+- openmeteo:
+    label: Home
+    latitude: {{HOMEPAGE_VAR_LONG}}
+    longitude: {{HOMEPAGE_VAR_LAT}}
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+    format: # optional, Intl.NumberFormat options
+      maximumFractionDigits: 1

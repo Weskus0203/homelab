@@ -1,0 +1,42 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+title: Weskus Homelab
+
+background: /images/dark_gravel.jpg
+cardBlur: xs
+
+headerStyle: boxed
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
+  provider: google # google, duckduckgo, bing, baidu, brave or custom
+
+theme: dark
+color: teal
+useEqualHeights: true
+
+layout:
+  Info & Status:
+    icon: /icons/icon_hardware.png
+    style: row
+    columns: 5
+  Media:
+    icon: /icons/icon_video.png
+    style: row
+    columns: 3
+  Downloaders:
+    icon: /icons/icon_download.png
+  Network:
+    icon: /icons/icon_network.png
+  Applications:
+    icon: /icons/icon_apps.png
+  Proxmox Status:
+    icon: /icons/icon_server.png
+    style: row
+    columns: 5
+  
+

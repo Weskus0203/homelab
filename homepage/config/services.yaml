@@ -1,0 +1,306 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Media:
+    - Jellyfin:
+        icon: jellyfin.png
+        href: {{HOMEPAGE_VAR_JELLYFINURL}}
+        ping: {{HOMEPAGE_VAR_JELLYFINURL}}
+        statusStyle: 'dot'
+        description: Media Player
+        widget:
+            type: jellyfin
+            url: {{HOMEPAGE_VAR_JELLYFINURL}}
+            key: {{HOMEPAGE_VAR_JELLYFINKEY}}
+            enableBlocks: true # optional, defaults to false
+            enableNowPlaying: true # optional, defaults to true
+            enableUser: true # optional, defaults to false
+            enableMediaControl: false # optional, defaults to true
+            showEpisodeNumber: true # optional, defaults to false
+            expandOneStreamToTwoRows: false # optional, defaults to true
+    - Jellyseerr:
+        icon: jellyseerr.png
+        href: {{HOMEPAGE_VAR_JELLYSEERRURL}}
+        statusStyle: 'dot'
+        description: Media Requests
+        container: huntarr
+        widget:
+            type: jellyseerr
+            url: {{HOMEPAGE_VAR_JELLYSEERRURL}}
+            key: {{HOMEPAGE_VAR_JELLYSEERRKEY}}
+    - Radarr:
+        icon: radarr.png
+        href: {{HOMEPAGE_VAR_RADARRURL}}
+        statusStyle: 'dot'
+        description: Movie Manager
+        container: radarr
+        widget:
+            type: radarr
+            url: {{HOMEPAGE_VAR_RADARRURL}}
+            key: {{HOMEPAGE_VAR_RADARRKEY}}
+            enableQueue: false # optional, defaults to false
+    - Sonarr:
+        icon: sonarr.png
+        href: {{HOMEPAGE_VAR_SONARRURL}}
+        statusStyle: 'dot'
+        description: TV Manager
+        container: sonarr
+        widget:
+            type: sonarr
+            url: {{HOMEPAGE_VAR_SONARRURL}}
+            key: {{HOMEPAGE_VAR_SONARRKEY}}
+            enableQueue: false # optional, defaults to false
+    - Prowlarr:
+        icon: prowlarr.png
+        href: {{HOMEPAGE_VAR_PROWLARRURL}}
+        statusStyle: 'dot'
+        description: Indexer
+        container: prowlarr
+        widget:
+            type: prowlarr
+            url: {{HOMEPAGE_VAR_PROWLARRURL}}
+            key: {{HOMEPAGE_VAR_PROWLARRKEY}}
+    - Huntarr:
+        icon: huntarr.png
+        description: Missing Item Hunter
+        href: {{HOMEPAGE_VAR_HUNTARRURL}}
+        statusStyle: 'dot'
+        container: huntarr
+        widget:
+          type: customapi
+          url: "{{HOMEPAGE_VAR_HUNTARRURL}}/api/cycle/status"
+          method: GET
+          label: Next Cycle
+          mappings:
+            - label: Radarr
+              field: radarr.next_cycle
+              format: relativeDate
+            - label: Sonarr
+              field: sonarr.next_cycle
+              format: relativeDate
+    - Cleanuparr:
+        icon: cleanuperr.png
+        description: Stalled Downloads Cleaner
+        href: {{HOMEPAGE_VAR_CLEANUPARRURL}}
+        statusStyle: 'dot'
+        container: cleanuparr
+        widget:
+          type: customapi
+          url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/jobs"
+          method: GET
+          mappings:
+            - field:
+                0: 
+                  nextRunTime
+              label: Queue Cleaner
+              format: relativeDate
+            - field:
+                1: 
+                  nextRunTime
+              label: Malware Blocker
+              format: relativeDate
+            - field:
+                2: 
+                  nextRunTime
+              label: Download Cleaner
+              format: relativeDate
+    - Immich:
+        icon: immich.png
+        href: {{HOMEPAGE_VAR_IMMICHURL}}
+        statusStyle: 'dot'
+        description: Photo Manager
+        container: immich_server
+        widget:
+            type: immich
+            url: {{HOMEPAGE_VAR_IMMICHURL}}
+            key: {{HOMEPAGE_VAR_IMMICHKEY}}
+            version: 2 # optional, default is 1
+
+- Downloaders:
+    - SABnzbd:
+        icon: sabnzbd.png
+        href: {{HOMEPAGE_VAR_SABRL}}
+        statusStyle: 'dot'
+        description: Usenet Client
+        container: sabnzbd
+        widget:
+            type: sabnzbd
+            url: {{HOMEPAGE_VAR_SABRL}}
+            key: {{HOMEPAGE_VAR_SABKEY}}
+    - Qbittorrent:
+        icon: qbittorrent.png
+        href: {{HOMEPAGE_VAR_QBITURL}}
+        statusStyle: 'dot'
+        description: Torrent Client
+        container: qbittorrent
+        widget:
+            type: qbittorrent
+            url: {{HOMEPAGE_VAR_QBITURL}}
+            username: {{HOMEPAGE_VAR_QBITUSER}}
+            password: {{HOMEPAGE_VAR_QBITPW}}
+- Network:
+    - Unifi Dream Machine:
+        icon: unifi.png
+        href: {{HOMEPAGE_VAR_UNIFIURL}}
+        ping: {{HOMEPAGE_VAR_UNIFIURL}}
+        statusStyle: 'dot'
+        description: Router
+        widget:
+            type: unifi
+            url: {{HOMEPAGE_VAR_UNIFIURL}}
+            fields: ["uptime", "lan_users", "wlan_users"]
+    - SpeedTest:
+        icon: speedtest-tracker.png
+        href: {{HOMEPAGE_VAR_SPEEDURL}}
+        statusStyle: 'dot'
+        description: Gota go fast 🐌
+        container: speedtest-tracker
+        widget:
+            type: speedtest
+            url: {{HOMEPAGE_VAR_SPEEDURL}}
+            version: 2 # optional, default is 1
+            key: {{HOMEPAGE_VAR_SPEEDKEY}}
+            bitratePrecision: 1 # optional, default is 0
+    - Caddy:
+        icon: caddy.png
+        href: {{HOMEPAGE_VAR_CADDYURL}}
+        ping: {{HOMEPAGE_VAR_CADDYURL}}
+        statusStyle: 'dot'
+        description: ReverseProxy Service
+        widget:
+            type: caddy
+            url: {{HOMEPAGE_VAR_CADDYURL}}
+- Applications:
+    - Portainer:
+        icon: portainer-alt.png
+        href: {{HOMEPAGE_VAR_PORTURL}}
+        ping: {{HOMEPAGE_VAR_PORTURL}}
+        statusStyle: 'dot'
+        description: Docker Manager
+        widget:
+            type: portainer
+            url: {{HOMEPAGE_VAR_PORTURL}}
+            env: 2
+            key: {{HOMEPAGE_VAR_PORTKEY}}
+    - Proxmox:
+        icon: proxmox.png
+        href: {{HOMEPAGE_VAR_PROXMOXURL}}
+        ping: {{HOMEPAGE_VAR_PROXMOXURL}}
+        statusStyle: 'dot'
+        description: Server Manager
+        widget:
+            type: proxmox
+            url: {{HOMEPAGE_VAR_PROXMOXURL}}
+            username: {{HOMEPAGE_VAR_PROXMOXTOKEN}}
+            password: {{HOMEPAGE_VAR_PROXMOXSECRET}}
+            node: Home1 # optional
+- Proxmox Status:
+    - ARR Stack:
+        icon: servarr.png
+        href: {{HOMEPAGE_VAR_PROXMOXURL}}
+        description: Yarr
+        proxmoxNode: Home1
+        proxmoxVMID: 102
+        showStats: true
+    - Fileserver:
+        icon: /icons/icon_cloud.png
+        href: {{HOMEPAGE_VAR_FILESURL}}
+        description: File Server Manager
+        proxmoxNode: Home1
+        proxmoxVMID: 100
+        proxmoxType: lxc
+        showStats: true
+    - JellfinLXC:
+        icon: jellyfin.png
+        href: {{HOMEPAGE_VAR_JELLYFINURL}}
+        description: Jellyfin Container
+        proxmoxNode: Home1
+        proxmoxVMID: 101
+        proxmoxType: lxc
+        showStats: true
+    - DNS:
+        icon: /icons/icon_dns.png
+        href: {{HOMEPAGE_VAR_DNSURL}}
+        description: DNS Server
+        proxmoxNode: Home1
+        proxmoxVMID: 103
+        proxmoxType: lxc
+        showStats: true
+- Info & Status:
+    - CPU Usage:
+        icon: /icons/icon_cpu.png
+        href: 
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            username: {{HOMEPAGE_VAR_GLANCESUSER}} # optional if auth enabled in Glances
+            password: {{HOMEPAGE_VAR_GLANCESPW}} # optional if auth enabled in Glances
+            version: 4 # required only if running glances v4 or higher, defaults to 3
+            metric: cpu
+            diskUnits: bytes # optional, bytes (default) or bbytes. Only applies to disk
+            refreshInterval: 5000 # optional - in milliseconds, defaults to 1000 or more, depending on the metric
+            pointsLimit: 15 # optional, defaults to 15
+    - Memory Usage:
+        icon: /icons/icon_ram.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: memory
+    - Network Usage:
+        icon: /icons/icon_eth.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: network:vmbr0
+    - CPU Temp:
+        icon: /icons/icon_temp.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: sensor:Package id 0
+    - Processes:
+        icon: /icons/icon_cpu.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: process
+    - Disk Storage 1 Usage:
+        icon: /icons/icon_hdd.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: disk:sda
+    - Disk Storage 2 Usage:
+        icon: /icons/icon_hdd.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: disk:sdb
+    - Disk OS Usage:
+        icon: /icons/icon_hdd.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: disk:sdc
+    - Data Media:
+        icon: /icons/icon_hdd.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: fs:/data/media
+    - Data ProtonDrive:
+        icon: /icons/icon_hdd.png
+        widget:
+            type: glances
+            url: {{HOMEPAGE_VAR_GLANCESURL}}
+            version: 4
+            metric: fs:/data/protondrive
