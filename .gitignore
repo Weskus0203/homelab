@@ -1,9 +1,10 @@
 # --- SECRETS & ENVIRONMENT FILES ---
-# ABSOLUTELY DO NOT BACK UP THIS FILE! It holds your keys and passwords.
 .env
+Thumbs.db
+*.db
 
-
-# Docker data folders that want to exist with the correct permissions
+# --- GENERAL DOCKER FILTERS ---
+# Ignore contents but keep the folder structure via .gitkeep
 /*/backup/**
 !/*/backup/.gitkeep
 /*/config/**
@@ -15,8 +16,15 @@
 /*/tmp/**
 !/*/tmp/.gitkeep
 
-# Exceptions
+# --- HOMEPAGE EXCEPTIONS ---
+# 1. Open the door to the folder
+!/homepage/config/
+
+# 2. Ignore everything inside by default
+/homepage/config/*
+
+# 3. Specifically allow these files and the ENTIRE assets folder
 !/homepage/config/services.yaml
 !/homepage/config/settings.yaml
 !/homepage/config/widgets.yaml
-!/homepage/config/assets/
+!/homepage/config/assets/**
