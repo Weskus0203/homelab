@@ -24,39 +24,50 @@ The primary motivations behind this structured configuration repository are:
 
 ---
 
-## 🗃️ Containers
+## 🛠️ Software Stack
 
-> This the containers that I currently use. 
+> This is the current software stack that I currently use. 
+
+### 🖥️ OS & Infrastructure
+| Software | Purpose |
+| :--- | :--- |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/proxmox.png" width="20"> [Proxmox](https://www.proxmox.com/en/) | Hypervisor / Virtualization Platform |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/portainer.png" width="20"> [Portainer](https://www.portainer.io/) | Container Management |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/cockpit.png" width="20"> [Cockpit](https://cockpit-project.org/) | Fileserver & Web-based Server Manager |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/technitium.png" width="20"> [Technitium](https://technitium.com/dns/) | Self-hosted DNS Server |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/caddy.png" width="20"> [Caddy](https://caddyserver.com/) | Reverse Proxy with Automatic SSL |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/glances.png" width="20"> [Glances](https://github.com/nicolargo/glances) | Real-time System Monitoring |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/speedtest-tracker.png" width="20"> [Speedtest Tracker](https://docs.speedtest-tracker.dev/) | Network Performance Tracking |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/homepage.png" width="20"> [Homepage](https://gethomepage.dev/) | Dashboard for Services |
 
 ### 🎥 Media Managment
 
-* **Radarr**: Movie Manager.
-* **Sonarr**: TV Show Manager.
-* **Prowlarr**: Indexer Manager.
-* **Jellseerr**: Media Requests for Sonarr / Radarr.
-* **Recyclarr**: Custom Format Manager.
+| Software | Purpose |
+| :--- | :--- |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/jellyfin.png" width="20"> [Jellyfin](https://jellyfin.org/) | Open Source Media Server |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/overseerr.png" width="20"> [Seerr](https://seerr.dev/) | Media Request & Discovery |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/radarr.png" width="20"> [Radarr](https://radarr.video/) | Movie Management |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sonarr.png" width="20"> [Sonarr](https://sonarr.tv/) | TV Show Management |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/prowlarr.png" width="20"> [Prowlarr](https://prowlarr.com/) | Indexer Manager |
 
 ### 📥 Downloaders
 
-* **QBittorrent**: Torrent Client.
-* **SABnzbd**: Usenet Client.
+| Software | Purpose |
+| :--- | :--- |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sabnzbd.png" width="20"> [SABnzbd](https://sabnzbd.org/) | Binary Newsgroup Downloader |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/qbittorrent.png" width="20"> [qBittorrent](https://www.qbittorrent.org/) | BitTorrent Client |
 
 ### 🔍 Download Optimizers
 
-* **Cleanuparr**: Stalled Downloads and Queue Cleaner.
-* **Huntarr**: Missing Media Item Hunter.
+| Software | Purpose |
+| :--- | :--- |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/huntarr.png" width="20"> [Huntarr](https://github.com/plexguide/Huntarr.io) | Smart Content Discovery |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cleanuperr.png" width="20"> [Cleanuparr](https://cleanuparr.github.io/Cleanuparr/) | Downloader Cleanup Tool |
 
-### 💻 Misc
+### Photos 📷
 
-* **homepage**: Server Status and Dashboard.
-* **SpeedTest-Tracker**: Network Speed Tests.
-* **Immich**: Photo Server.
-* **Trillium**: Note Repository.
+| Software | Purpose |
+| :--- | :--- |
+| <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/immich.png" width="20"> [Immich](https://immich.app/) | High-performance Photo/Video Backup |
 
 ---
-
-
-
-
-
-

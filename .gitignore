@@ -28,3 +28,4 @@ Thumbs.db
 !/homepage/config/settings.yaml
 !/homepage/config/widgets.yaml
 !/homepage/config/assets/**
+/homepage/config/assets/*.db
