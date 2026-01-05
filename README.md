@@ -49,6 +49,7 @@ The primary motivations behind this structured configuration repository are:
 | <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/radarr.png" width="20"> [Radarr](https://radarr.video/) | Movie Management |
 | <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sonarr.png" width="20"> [Sonarr](https://sonarr.tv/) | TV Show Management |
 | <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/prowlarr.png" width="20"> [Prowlarr](https://prowlarr.com/) | Indexer Manager |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/recyclarr.png" width="20"> [Recylarr](https://recyclarr.dev/) | Custom Profile Manager |
 
 ### 📥 Downloaders
 

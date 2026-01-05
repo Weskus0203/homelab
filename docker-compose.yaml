@@ -16,6 +16,7 @@ include:
   - radarr/compose.yaml               # Movie Manager
   - recyclarr/compose.yaml            # Custom Format Sync
   - jellyseerr/compose.yaml           # Media Search
+  - musicmetadata/compose.yaml        # Music Metadata 
 
   #Misc
   - homepage/compose.yaml             # Dashboard
