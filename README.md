@@ -50,6 +50,7 @@ The primary motivations behind this structured configuration repository are:
 | <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sonarr.png" width="20"> [Sonarr](https://sonarr.tv/) | TV Show Management |
 | <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/prowlarr.png" width="20"> [Prowlarr](https://prowlarr.com/) | Indexer Manager |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/recyclarr.png" width="20"> [Recylarr](https://recyclarr.dev/) | Custom Profile Manager |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tdarr.png" width="20"> [Tdarr]([https://recyclarr.dev/](https://home.tdarr.io/)) | Transcode Engine |
 
 ### 📥 Downloaders
 
@@ -62,7 +63,6 @@ The primary motivations behind this structured configuration repository are:
 
 | Software | Purpose |
 | :--- | :--- |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/huntarr.png" width="20"> [Huntarr](https://github.com/plexguide/Huntarr.io) | Smart Content Discovery |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cleanuperr.png" width="20"> [Cleanuparr](https://cleanuparr.github.io/Cleanuparr/) | Downloader Cleanup Tool |
 
 ### Photos 📷
