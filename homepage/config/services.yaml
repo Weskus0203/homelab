@@ -19,12 +19,12 @@
             enableMediaControl: false # optional, defaults to true
             showEpisodeNumber: true # optional, defaults to false
             expandOneStreamToTwoRows: false # optional, defaults to true
-    - Jellyseerr:
-        icon: jellyseerr.png
+    - Seerr:
+        icon: seerr.png
         href: {{HOMEPAGE_VAR_JELLYSEERRURL}}
         statusStyle: 'dot'
         description: Media Requests
-        container: huntarr
+        container: seerr
         widget:
             type: jellyseerr
             url: {{HOMEPAGE_VAR_JELLYSEERRURL}}
@@ -61,50 +61,25 @@
             type: prowlarr
             url: {{HOMEPAGE_VAR_PROWLARRURL}}
             key: {{HOMEPAGE_VAR_PROWLARRKEY}}
-    - Huntarr:
-        icon: huntarr.png
-        description: Missing Item Hunter
-        href: {{HOMEPAGE_VAR_HUNTARRURL}}
-        statusStyle: 'dot'
-        container: huntarr
-        widget:
-          type: customapi
-          url: "{{HOMEPAGE_VAR_HUNTARRURL}}/api/cycle/status"
-          method: GET
-          label: Next Cycle
-          mappings:
-            - label: Radarr
-              field: radarr.next_cycle
-              format: relativeDate
-            - label: Sonarr
-              field: sonarr.next_cycle
-              format: relativeDate
-    - Cleanuparr:
-        icon: cleanuperr.png
-        description: Stalled Downloads Cleaner
-        href: {{HOMEPAGE_VAR_CLEANUPARRURL}}
-        statusStyle: 'dot'
-        container: cleanuparr
-        widget:
-          type: customapi
-          url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/jobs"
-          method: GET
-          mappings:
-            - field:
-                0: 
-                  nextRunTime
-              label: Queue Cleaner
-              format: relativeDate
-            - field:
-                1: 
-                  nextRunTime
-              label: Malware Blocker
-              format: relativeDate
-            - field:
-                2: 
-                  nextRunTime
-              label: Download Cleaner
-              format: relativeDate
+    ############ removed untill suitable replacement is found        
+    #- Huntarr:
+    #    icon: huntarr.png
+    #    description: Missing Item Hunter
+    #    href: {{HOMEPAGE_VAR_HUNTARRURL}}
+    #    statusStyle: 'dot'
+    #    container: huntarr
+    #    widget:
+    #      type: customapi
+    #      url: "{{HOMEPAGE_VAR_HUNTARRURL}}/api/cycle/status"
+    #      method: GET
+    #      label: Next Cycle
+    #      mappings:
+    #        - label: Radarr
+    #          field: radarr.next_cycle
+    #          format: relativeDate
+    #        - label: Sonarr
+    #          field: sonarr.next_cycle
+    #          format: relativeDate
     - Immich:
         icon: immich.png
         href: {{HOMEPAGE_VAR_IMMICHURL}}
@@ -116,6 +91,84 @@
             url: {{HOMEPAGE_VAR_IMMICHURL}}
             key: {{HOMEPAGE_VAR_IMMICHKEY}}
             version: 2 # optional, default is 1
+
+    - Cleanuparr:
+        icon: cleanuperr.png
+        description: Download Client Cleaner
+        href: {{HOMEPAGE_VAR_CLEANUPARRURL}}
+        statusStyle: 'dot'
+        container: cleanuparr
+        widgets:
+          - type: customapi
+            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
+            method: GET
+            headers:
+              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+            mappings:
+              - field: health.arrInstances.0.isHealthy
+                label: Sonarr
+                format: text
+                remap:
+                  - value: false
+                    to: "Issue! ❌"
+                  - value: true
+                    to: "Healthy ✅"  
+              - field: health.arrInstances.1.isHealthy
+                label: Radarr
+                format: text
+                remap:
+                  - value: false
+                    to: "Issue! ❌"
+                  - value: true
+                    to: "Healthy ✅" 
+              - field: health.downloadClients.0.isHealthy
+                label: qBittorrent
+                format: text
+                remap:
+                  - value: false
+                    to: "Issue! ❌"
+                  - value: true
+                    to: "Healthy ✅" 
+          - type: customapi
+            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
+            method: GET
+            headers:
+              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+            mappings:
+              - field: jobs.byType.QueueCleaner.nextRunAt
+                label: Queue Cleaner
+                format: relativeDate
+              - field: jobs.byType.MalwareBlocker.nextRunAt
+                label: Malware Blocker
+                format: relativeDate
+              - field: jobs.byType.DownloadCleaner.nextRunAt
+                label: Download Cleaner
+                format: relativeDate
+          - type: customapi
+            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
+            method: GET
+            headers:
+              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+            mappings:
+              - field: events.totalCount
+                label: Events (7d)
+                format: number
+              - field: strikes.totalCount
+                label: Strikes (7d)
+                format: number
+              - field: strikes.itemsRemoved
+                label: Items Removed
+                format: number
+    
+    - Tdarr:
+        icon: tdarr.png
+        href: http://192.168.10.15:8265 #{{HOMEPAGE_VAR_TDARRURL}}
+        statusStyle: 'dot'
+        description: Transcodes
+        widget:
+            type: tdarr
+            url: http://192.168.10.15:8265 #{{HOMEPAGE_VAR_TDARRURL}}
+            key: "{{HOMEPAGE_VAR_TDARRKEY}}"
 
 - Downloaders:
     - SABnzbd:

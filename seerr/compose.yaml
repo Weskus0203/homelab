@@ -1,7 +1,8 @@
 services:
-  jellyseerr:
-    image: ghcr.io/fallenbagel/jellyseerr:latest
-    container_name: jellyseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
     env_file: ../.env
     environment:
       - PUID=${PUID}

@@ -7,7 +7,7 @@ include:
   - sabnzbd/compose.yaml              # Usnenet client
 
   #Download Optimizers
-  - huntarr/compose.yaml              # Missing Media Item Hunter
+  #- huntarr/compose.yaml              # Missing Media Item Hunter
   - cleanuparr/compose.yaml           # Torrent Stalled Downloads Cleaner
 
   #Media Management
@@ -15,7 +15,7 @@ include:
   - sonarr/compose.yaml               # Series Manager
   - radarr/compose.yaml               # Movie Manager
   - recyclarr/compose.yaml            # Custom Format Sync
-  - jellyseerr/compose.yaml           # Media Search
+  - seerr/compose.yaml           # Media Search
   - musicmetadata/compose.yaml        # Music Metadata 
 
   #Misc
