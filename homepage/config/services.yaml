@@ -168,7 +168,7 @@
         widget:
             type: tdarr
             url: http://192.168.10.15:8265 #{{HOMEPAGE_VAR_TDARRURL}}
-            key: "{{HOMEPAGE_VAR_TDARRKEY}}"
+            key: {{HOMEPAGE_VAR_TDARRKEY}}
 
 - Downloaders:
     - SABnzbd:
@@ -248,6 +248,16 @@
             username: {{HOMEPAGE_VAR_PROXMOXTOKEN}}
             password: {{HOMEPAGE_VAR_PROXMOXSECRET}}
             node: Home1 # optional
+
+    - WVoron:
+        icon: klipper.png
+        href: {{HOMEPAGE_VAR_WVORONURL}}
+        ping: {{HOMEPAGE_VAR_WVORONURL}}
+        statusStyle: 'dot'
+        description: WVoron Printer Info
+        widget:
+            type: moonraker
+            url: {{HOMEPAGE_VAR_WVORONAPI}}
 - Proxmox Status:
     - ARR Stack:
         icon: servarr.png
