@@ -28,10 +28,12 @@ layout:
     icon: /icons/icon_video.png
     style: row
     columns: 3
-  Downloaders:
-    icon: /icons/icon_download.png
   Network:
     icon: /icons/icon_network.png
+    style: row
+    columns: 3
+  Downloaders:
+    icon: /icons/icon_download.png
   Applications:
     icon: /icons/icon_apps.png
   Proxmox Status:

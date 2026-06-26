@@ -1,0 +1,15 @@
+services:
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    env_file: ../.env
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=022
+      - TZ=${TZ}
+    ports:
+      - 11011:11011
+    volumes:
+      - ./config:/config
+    restart: unless-stopped

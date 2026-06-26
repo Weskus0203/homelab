@@ -9,8 +9,9 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.all.disable_ipv6=1
     ports:
-      - "8085:8085"
-      - "8118:8118"
+      - "8085:8085" # qBittorrent Web UI port
+      - "8118:8118" #privoxy
+      - "5010:5010" # Mousehole port
     env_file:
       - ../.env
     environment:
@@ -33,21 +34,36 @@ services:
       - VPN_FIREWALL_TYPE=auto
       - VPN_HEALTHCHECK_ENABLED=true
       - PRIVOXY_ENABLED=true
-      - VPN_EXPOSE_PORTS_ON_LAN=8118/tcp,8118/udp
+      - VPN_EXPOSE_PORTS_ON_LAN=5010/tcp,8118/tcp
       - UNBOUND_ENABLED=false
     volumes:
       - ./config:/config
       - ${MEDIA_DIR}:/data
 
-  seedboxapi:
-    container_name: seedboxapi
-    image: myanonamouse/seedboxapi
-    restart: unless-stopped
-    user: ${PUID}:${PGID}
+  mousehole:
+    image: tmmrtn/mousehole:latest
     network_mode: "service:qbittorrent"
-    env_file: ../.env
+    depends_on:
+      - qbittorrent
     environment:
-      - DEBUG=1
-      - mam_id=${MaMID}
+      TZ: ${TZ} # Set to your timezone for localization
+      MOUSEHOLE_AUTH_PASSWORD: ${MHPW}
+      MOUSEHOLE_ALLOWED_HOSTS: "*"
+      MOUSEHOLE_ALLOWED_ORIGINS: "*"
     volumes:
-      - ./config/seedboxMaM:/config
+      # persist cookie data across container restarts
+      - ./config/mousehole:/var/lib/mousehole
+    restart: unless-stopped      
+
+  #seedboxapi:
+  #  container_name: seedboxapi
+  #  image: myanonamouse/seedboxapi
+  #  restart: unless-stopped
+  #  user: ${PUID}:${PGID}
+  #  network_mode: "service:qbittorrent"
+  #  env_file: ../.env
+  #  environment:
+  #    - DEBUG=1
+  #    - mam_id=${MaMID}
+  #  volumes:
+  #    - ./config/seedboxMaM:/config

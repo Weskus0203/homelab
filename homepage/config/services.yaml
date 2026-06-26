@@ -61,25 +61,6 @@
             type: prowlarr
             url: {{HOMEPAGE_VAR_PROWLARRURL}}
             key: {{HOMEPAGE_VAR_PROWLARRKEY}}
-    ############ removed untill suitable replacement is found        
-    #- Huntarr:
-    #    icon: huntarr.png
-    #    description: Missing Item Hunter
-    #    href: {{HOMEPAGE_VAR_HUNTARRURL}}
-    #    statusStyle: 'dot'
-    #    container: huntarr
-    #    widget:
-    #      type: customapi
-    #      url: "{{HOMEPAGE_VAR_HUNTARRURL}}/api/cycle/status"
-    #      method: GET
-    #      label: Next Cycle
-    #      mappings:
-    #        - label: Radarr
-    #          field: radarr.next_cycle
-    #          format: relativeDate
-    #        - label: Sonarr
-    #          field: sonarr.next_cycle
-    #          format: relativeDate
     - Immich:
         icon: immich.png
         href: {{HOMEPAGE_VAR_IMMICHURL}}
@@ -202,6 +183,8 @@
         widget:
             type: unifi
             url: {{HOMEPAGE_VAR_UNIFIURL}}
+            username: {{HOMEPAGE_VAR_UNIFIUSER}}
+            password: {{HOMEPAGE_VAR_UNIFIPW}}
             fields: ["uptime", "lan_users", "wlan_users"]
     - SpeedTest:
         icon: speedtest-tracker.png
@@ -215,6 +198,17 @@
             version: 2 # optional, default is 1
             key: {{HOMEPAGE_VAR_SPEEDKEY}}
             bitratePrecision: 1 # optional, default is 0
+    - Technitium DNS:
+        icon: technitium.png
+        href: {{HOMEPAGE_VAR_DNSURL}}
+        ping: {{HOMEPAGE_VAR_DNSURL}}
+        statusStyle: 'dot'
+        description: DNS Server
+        widget:
+            type: technitium
+            url: {{HOMEPAGE_VAR_DNSURL}}
+            key: {{HOMEPAGE_VAR_DNSKEY}}
+            range: LastDay
     - Caddy:
         icon: caddy.png
         href: {{HOMEPAGE_VAR_CADDYURL}}
@@ -266,14 +260,6 @@
         proxmoxNode: Home1
         proxmoxVMID: 102
         showStats: true
-    - Fileserver:
-        icon: /icons/icon_cloud.png
-        href: {{HOMEPAGE_VAR_FILESURL}}
-        description: File Server Manager
-        proxmoxNode: Home1
-        proxmoxVMID: 100
-        proxmoxType: lxc
-        showStats: true
     - JellfinLXC:
         icon: jellyfin.png
         href: {{HOMEPAGE_VAR_JELLYFINURL}}
@@ -282,12 +268,28 @@
         proxmoxVMID: 101
         proxmoxType: lxc
         showStats: true
-    - DNS:
-        icon: /icons/icon_dns.png
+    - RProxyLXC:
+        icon: caddy.png
+        href: {{HOMEPAGE_VAR_PROXYURL}}
+        description: Reverse Proxy
+        proxmoxNode: Home1
+        proxmoxVMID: 103
+        proxmoxType: lxc
+        showStats: true
+    - DNSLXC:
+        icon: technitium.png
         href: {{HOMEPAGE_VAR_DNSURL}}
         description: DNS Server
         proxmoxNode: Home1
-        proxmoxVMID: 103
+        proxmoxVMID: 104
+        proxmoxType: lxc
+        showStats: true
+    - TranscodesLXC:
+        icon: tdarr.png
+        href: {{HOMEPAGE_VAR_TDARRURL}}
+        description: Transcodes Container
+        proxmoxNode: Home1
+        proxmoxVMID: 105
         proxmoxType: lxc
         showStats: true
 - Info & Status:

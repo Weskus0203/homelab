@@ -21,6 +21,7 @@ services:
       # The following are example read-only libraries from your inspect data.
       - ${EXTERNAL1}:${EXTERNAL1}:ro
       - ${EXTERNAL2}:${EXTERNAL2}:ro
+      - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
     ports:
@@ -50,7 +51,8 @@ services:
 
   redis:
     container_name: immich_redis
-    image: docker.io/valkey/valkey:8@sha256:81db6d39e1bba3b3ff32bd3a1b19a6d69690f94a3954ec131277b9a26b95b3aa
+    #image: docker.io/valkey/valkey:8@sha256:81db6d39e1bba3b3ff32bd3a1b19a6d69690f94a3954ec131277b9a26b95b3aa
+    image: docker.io/valkey/valkey:9@sha256:3b55fbaa0cd93cf0d9d961f405e4dfcc70efe325e2d84da207a0a8e6d8fde4f9
     healthcheck:
       test: redis-cli ping || exit 1
     restart: always
@@ -70,6 +72,8 @@ services:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     shm_size: 128mb
     restart: always
+    healthcheck:
+      disable: false
 
 volumes:
   model-cache:

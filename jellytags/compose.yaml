@@ -1,0 +1,11 @@
+services:
+  jellytags:
+    image: christt105/jellytags:latest
+    container_name: jellytags
+    env_file: ./.env
+    restart: unless-stopped
+    ports:
+      - "8181:80"
+    environment:
+      - VITE_JELLYFIN_URL=http://${JELLYFINIP}:8096
+      - VITE_JELLYFIN_TOKEN=${JELLYFINAPI}
