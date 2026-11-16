@@ -74,72 +74,72 @@
             version: 2 # optional, default is 1
 
     - Cleanuparr:
-        icon: cleanuperr.png
+        icon: cleanuparr.png
         description: Download Client Cleaner
         href: {{HOMEPAGE_VAR_CLEANUPARRURL}}
         statusStyle: 'dot'
         container: cleanuparr
         widgets:
-          - type: customapi
-            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
-            method: GET
-            headers:
-              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
-            mappings:
-              - field: health.arrInstances.0.isHealthy
-                label: Sonarr
-                format: text
-                remap:
+         - type: customapi
+           url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/v2/stats?hours=168"
+           method: GET
+           headers:
+            X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+           mappings:
+            - field: health.arrInstances.0.isHealthy
+              label: Sonarr
+              format: text
+              remap:
                   - value: false
                     to: "Issue! ❌"
                   - value: true
-                    to: "Healthy ✅"  
-              - field: health.arrInstances.1.isHealthy
-                label: Radarr
-                format: text
-                remap:
-                  - value: false
-                    to: "Issue! ❌"
-                  - value: true
-                    to: "Healthy ✅" 
-              - field: health.downloadClients.0.isHealthy
-                label: qBittorrent
-                format: text
-                remap:
-                  - value: false
-                    to: "Issue! ❌"
-                  - value: true
-                    to: "Healthy ✅" 
-          - type: customapi
-            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
-            method: GET
-            headers:
-              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
-            mappings:
-              - field: jobs.byType.QueueCleaner.nextRunAt
-                label: Queue Cleaner
-                format: relativeDate
-              - field: jobs.byType.MalwareBlocker.nextRunAt
-                label: Malware Blocker
-                format: relativeDate
-              - field: jobs.byType.DownloadCleaner.nextRunAt
-                label: Download Cleaner
-                format: relativeDate
-          - type: customapi
-            url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/stats?hours=168"
-            method: GET
-            headers:
-              X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
-            mappings:
-              - field: events.totalCount
-                label: Events (7d)
-                format: number
-              - field: strikes.totalCount
-                label: Strikes (7d)
-                format: number
-              - field: strikes.itemsRemoved
-                label: Items Removed
-                format: number
+                    to: "Healthy ✅"
+            - field: health.arrInstances.1.isHealthy
+              label: Radarr
+              format: text
+              remap:
+                - value: false
+                  to: "Issue! ❌"
+                - value: true
+                  to: "Healthy ✅"
+            - field: health.downloadClients.0.isHealthy
+              label: qBittorrent
+              format: text
+              remap:
+              - value: false
+                to: "Issue! ❌"
+              - value: true
+                to: "Healthy ✅"
+         - type: customapi
+           url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/v2/stats?hours=168"
+           method: GET
+           headers:
+            X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+           mappings:
+           - field: jobs.byType.QueueCleaner.nextRunAt
+             label: Queue Cleaner
+             format: relativeDate
+           - field: jobs.byType.MalwareBlocker.nextRunAt
+             label: Malware Blocker
+             format: relativeDate
+           - field: jobs.byType.DownloadCleaner.nextRunAt
+             label: Download Cleaner
+             format: relativeDate
+         - type: customapi
+           url: "{{HOMEPAGE_VAR_CLEANUPARRURL}}/api/v2/stats?hours=168"
+           method: GET
+           headers:
+            X-Api-Key: "{{HOMEPAGE_VAR_CLEANKEY}}"
+           mappings:
+           - field: events.total
+             label: Events (7d)
+             format: number
+           - field: strikes.total
+             label: Strikes (7d)
+             format: number
+           - field: removals.total
+             label: Items Removed
+             format: number
     
     - Tdarr:
         icon: tdarr.png
